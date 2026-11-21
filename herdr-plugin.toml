@@ -1,0 +1,48 @@
+id = "osama-usuf.pane-marks"
+name = "Pane Marks"
+version = "0.1.0"
+min_herdr_version = "0.9.5"
+description = "Flag panes to come back to, with an optional note, border label and sidebar count."
+platforms = ["linux", "macos"]
+
+[[startup]]
+command = ["python3", "marks.py", "resync"]
+
+[[actions]]
+id = "toggle"
+title = "Mark pane for later"
+command = ["python3", "marks.py", "toggle"]
+
+[[actions]]
+id = "next"
+title = "Next marked pane"
+command = ["python3", "marks.py", "next"]
+
+[[actions]]
+id = "open-list"
+title = "List marked panes"
+command = ["python3", "marks.py", "open-list"]
+
+[[panes]]
+id = "note"
+title = "Add pane reminder"
+placement = "popup"
+width = 64
+height = 7
+command = ["python3", "marks.py", "note"]
+
+[[panes]]
+id = "list"
+title = "Marked panes"
+placement = "popup"
+width = "70%"
+height = "50%"
+command = ["python3", "marks.py", "list-ui"]
+
+[[events]]
+on = "pane.closed"
+command = ["python3", "marks.py", "event"]
+
+[[events]]
+on = "pane.moved"
+command = ["python3", "marks.py", "event"]
